@@ -105,6 +105,9 @@ img {
   max-width: 100%;
   height: auto;
 }
+.border {
+    border: 1px solid #000;
+}
 
 /*=============== REUSABLE CSS CLASSES ===============*/
 .container {
@@ -147,9 +150,59 @@ img {
   justify-content: space-between;
   align-items: center;
 }
+.nav__logo {
+  display: inline-flex;
+  /* Đây là kiểu hiển thị kết hợp:
+        inline: phần tử sẽ nằm trên cùng một dòng với các phần tử khác nếu còn không gian.
+        flex: cho phép sắp xếp các phần tử con theo mô hình flexbox.
+        ⇒ Phần tử .nav__logo vừa không chiếm toàn bộ chiều ngang như block, vừa có thể dùng flex để căn chỉnh nội dung bên trong.*/
+  
+  align-items: center;
+  column-gap: 0.25rem;
+  font-family: var(--second-font);
+  color: var(--title-color);
+}
+.nav__logo img {
+  width: 24px;
+}
+.nav__close,
+.nav__toggle {
+  display: flex;
+  font-size: 1.5rem;
+  color: var(--title-color);
+  cursor: pointer;
+}
 
 /* Navigation for mobile devices */
+@media screen and (max-width: 1150px) {
+  .nav__menu {
+    position: fixed; /* Ghim menu vào một vị trí cố định trên màn hình, không cuộn theo trang. */
+    top: 0;
+    left: 0;
+    
+    background-color: var(--body-color);
+    width: 100%;
+    padding-block: 4.5rem 3.5rem;  /* Tạo khoảng cách theo chiều dọc: 4.5rem phía trên và 3.5rem phía dưới (áp dụng cho padding-top và padding-bottom).*/
+    box-shadow: 0 4px 16px hsla(353, 100%, 8%, .1); /* Tạo hiệu ứng đổ bóng nhẹ bên dưới menu, giúp menu nổi lên trên nền. */
+    transition: top .4s; /* Khi giá trị top thay đổi (ví dụ: để ẩn hoặc hiện menu), hiệu ứng sẽ diễn ra trong 0.4 giây, tạo cảm giác mượt mà. */
+  }
+}
 
+.nav__list {
+  text-align: center;
+  /* Căn giữa nội dung văn bản trong các phần tử con (nếu là thẻ inline hoặc inline-block, ví dụ: <a>, <span>).
+     Điều này giúp các mục menu (thường là liên kết) hiển thị ở giữa theo chiều ngang.*/
+  
+  display: flex;
+  flex-direction: column;
+  /* display: flex;
+        Biến .nav__list thành một container flexbox để sắp xếp các phần tử con (menu items) linh hoạt hơn.
+     flex-direction: column;
+        Các phần tử con bên trong (thường là <li> hoặc <a>) sẽ được sắp xếp theo chiều dọc (từ trên xuống).*/
+
+  row-gap: 2rem;
+  /* Tạo khoảng cách giữa các hàng (tức là các mục menu) là 2rem (~32px nếu 1rem = 16px).*/
+}
 
 /* Show menu */
 
