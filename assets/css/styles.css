@@ -177,7 +177,7 @@ img {
 @media screen and (max-width: 1150px) {
   .nav__menu {
     position: fixed; /* Ghim menu vào một vị trí cố định trên màn hình, không cuộn theo trang. */
-    top: 0;
+    top: -120%; /* trước đó là top: 0 để hiển thị menu*/
     left: 0;
     
     background-color: var(--body-color);
@@ -202,6 +202,40 @@ img {
 
   row-gap: 2rem;
   /* Tạo khoảng cách giữa các hàng (tức là các mục menu) là 2rem (~32px nếu 1rem = 16px).*/
+}
+
+.nav__link {
+  position: relative;
+  color: var(--title-color);
+  font-family: var(--second-font);
+}
+.nav__link::after {
+  content: '';
+  width: 0;
+  height: 3px;
+  background-color: var(--first-color);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transition: width .4s;
+}
+/* .nav__link được đặt position: relative để làm mốc tham chiếu cho phần tử ảo ::after.
+   ::after là một đường thẳng (3px chiều cao), nằm dưới liên kết (bottom: 0).
+   width: 100% nghĩa là đường gạch chân dài bằng chiều rộng của liên kết.
+   transition: width .4s cho phép hiệu ứng chuyển động mượt mà khi thay đổi độ rộng.
+*/
+
+.nav__link:hover::after {
+  width: 60%;
+  transform-origin: left; /* Có thể kết hợp với transform-origin để điều khiển hướng chuyển động */
+}
+/* Khi bạn đưa chuột vào liên kết, một gạch chân sẽ từ trái sang phải xuất hiện.
+   Có thể kết hợp với transform-origin để điều khiển hướng chuyển động, ví dụ:*/
+
+.nav__close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
 }
 
 /* Show menu */
