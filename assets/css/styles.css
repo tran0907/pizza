@@ -16,8 +16,8 @@
   --white-color: hsl(24, 86%, 90%);
   --body-color: hsl(24, 86%, 88%);
   --container-color: hsl(24, 86%, 92%);
-  --shadow-small-img: drop-shadow(0 4px 16px hsla(353, 100%, 8%, .2));
-  --shadow-big-img: drop-shadow(0 8px 24px hsla(353, 100%, 8%, .2));
+  --shadow-small-img: drop-shadow(0 4px 16px hsla(353, 100%, 8%, 0.2));
+  --shadow-big-img: drop-shadow(0 8px 24px hsla(353, 100%, 8%, 0.2));
 
   /*========== Font and typography ==========*/
   /*.5rem = 8px | 1rem = 16px ...*/
@@ -28,9 +28,9 @@
   --h1-font-size: 1.5rem;
   --h2-font-size: 1.25rem;
   --h3-font-size: 1rem;
-  --normal-font-size: .938rem;
-  --small-font-size: .813rem;
-  --smaller-font-size: .75rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
 
   /*========== Font weight ==========*/
   --font-regular: 400;
@@ -51,8 +51,8 @@
     --h2-font-size: 1.5rem;
     --h3-font-size: 1.25rem;
     --normal-font-size: 1rem;
-    --small-font-size: .875rem;
-    --smaller-font-size: .813rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.813rem;
   }
 }
 
@@ -85,7 +85,10 @@ button {
   border: none;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   color: var(--title-color);
   font-weight: var(--font-regular);
   font-family: var(--second-font);
@@ -106,7 +109,7 @@ img {
   height: auto;
 }
 .border {
-    border: 1px solid #000;
+  border: 1px solid #000;
 }
 
 /*=============== REUSABLE CSS CLASSES ===============*/
@@ -134,7 +137,7 @@ img {
 }
 
 /*=============== HEADER & NAV ===============*/
-.header{
+.header {
   position: fixed;
   width: 100%;
   top: 0;
@@ -156,7 +159,7 @@ img {
         inline: phần tử sẽ nằm trên cùng một dòng với các phần tử khác nếu còn không gian.
         flex: cho phép sắp xếp các phần tử con theo mô hình flexbox.
         ⇒ Phần tử .nav__logo vừa không chiếm toàn bộ chiều ngang như block, vừa có thể dùng flex để căn chỉnh nội dung bên trong.*/
-  
+
   align-items: center;
   column-gap: 0.25rem;
   font-family: var(--second-font);
@@ -179,12 +182,12 @@ img {
     position: fixed; /* Ghim menu vào một vị trí cố định trên màn hình, không cuộn theo trang. */
     top: -120%; /* trước đó là top: 0 để hiển thị menu*/
     left: 0;
-    
+
     background-color: var(--body-color);
     width: 100%;
-    padding-block: 4.5rem 3.5rem;  /* Tạo khoảng cách theo chiều dọc: 4.5rem phía trên và 3.5rem phía dưới (áp dụng cho padding-top và padding-bottom).*/
-    box-shadow: 0 4px 16px hsla(353, 100%, 8%, .1); /* Tạo hiệu ứng đổ bóng nhẹ bên dưới menu, giúp menu nổi lên trên nền. */
-    transition: top .4s; /* Khi giá trị top thay đổi (ví dụ: để ẩn hoặc hiện menu), hiệu ứng sẽ diễn ra trong 0.4 giây, tạo cảm giác mượt mà. */
+    padding-block: 4.5rem 3.5rem; /* Tạo khoảng cách theo chiều dọc: 4.5rem phía trên và 3.5rem phía dưới (áp dụng cho padding-top và padding-bottom).*/
+    box-shadow: 0 4px 16px hsla(353, 100%, 8%, 0.1); /* Tạo hiệu ứng đổ bóng nhẹ bên dưới menu, giúp menu nổi lên trên nền. */
+    transition: top 0.4s; /* Khi giá trị top thay đổi (ví dụ: để ẩn hoặc hiện menu), hiệu ứng sẽ diễn ra trong 0.4 giây, tạo cảm giác mượt mà. */
   }
 }
 
@@ -192,7 +195,7 @@ img {
   text-align: center;
   /* Căn giữa nội dung văn bản trong các phần tử con (nếu là thẻ inline hoặc inline-block, ví dụ: <a>, <span>).
      Điều này giúp các mục menu (thường là liên kết) hiển thị ở giữa theo chiều ngang.*/
-  
+
   display: flex;
   flex-direction: column;
   /* display: flex;
@@ -210,14 +213,14 @@ img {
   font-family: var(--second-font);
 }
 .nav__link::after {
-  content: '';
+  content: "";
   width: 0;
   height: 3px;
   background-color: var(--first-color);
   position: absolute;
   left: 0;
   bottom: 0;
-  transition: width .4s;
+  transition: width 0.4s;
 }
 /* .nav__link được đặt position: relative để làm mốc tham chiếu cho phần tử ảo ::after.
    ::after là một đường thẳng (3px chiều cao), nằm dưới liên kết (bottom: 0).
@@ -243,17 +246,141 @@ img {
   top: 0;
 }
 
-
 /* Add shadow header */
-
 
 /* Active link */
 
-
 /*=============== HOME ===============*/
+.home__container {
+  padding-block: 2rem 3rem;
+  row-gap: 7rem;
+}
+/* padding-block: 2rem 3rem;
+      → Thêm khoảng cách trên (top) là 2rem và dưới (bottom) là 3rem.
+     row-gap: 7rem;
+      → Khoảng cách giữa các hàng (chỉ có hiệu lực khi dùng display: grid hoặc flex với flex-direction: column).*/
+
+.home__data {
+  position: relative;
+  text-align: center;
+}
+/* position: relative;
+      → Cho phép các phần tử con (như hình ảnh dán/sticker) được định vị tuyệt đối (absolute) bên trong.
+     text-align: center;
+      → Căn giữa nội dung văn bản theo chiều ngang.*/
+
+.home__title {
+  font-size: var(--biggest-font-size);
+}
+/* font-size dùng biến CSS --biggest-font-size (có thể được định nghĩa ở nơi khác như :root).
+      → Tăng kích cỡ tiêu đề (title).*/
+
+.home__description {
+  margin-block: 1rem 2rem; /* Tạo khoảng cách theo chiều dọc: 1rem phía trên và */
+}
+
+.home__sticker-1,
+.home__sticker-2 {
+  width: 40px; /* → Đặt kích thước chiều rộng cho sticker.*/
+  position: absolute; /* → Định vị hình dán tương đối so với phần tử cha (.home__data).*/
+  opacity: 0.7;
+}
+.home__sticker-1 {
+  right: 0.75rem; /* → Dịch sticker về phía bên phải, cách mép container 0.75 rem.*/
+  bottom: 2rem; /* → Cách mép dưới 2 rem.*/
+  rotate: 30deg;  /* Xoay phần tử 30 độ theo chiều kim đồng hồ. 
+                  (rotate là thuộc tính mới, tương đương transform: rotate(30deg); trong các trình duyệt hiện đại.)*/
+}
+/* 💡 Tác dụng: Sticker 1 được gắn ở góc phải bên dưới và xoay nhẹ để tạo hiệu ứng sinh động.*/
+
+.home__sticker-2 {
+  left: 2.5rem;     /* → Cách mép trái 2.5 rem.*/
+  bottom: -4.5rem;  /* → Sticker trượt xuống thấp hơn mép dưới 4.5 rem (vượt ra ngoài phần tử cha).*/
+}
+/* 💡 Tác dụng: Sticker 2 được đặt ở bên trái và hơi trồi xuống khỏi container, tạo cảm giác phá vỡ khung hình.*/
+
+/* 📦 Kết hợp với phần trước:
+          Bạn đã có:
+          .home__data có position: relative
+          .home__sticker-1 và .home__sticker-2 có position: absolute
+          Nghĩa là sticker sẽ được gắn vị trí tương đối với khối .home__data.
+*/
+
+.home__images {
+  position: relative;
+  display: grid;         /* → Tạo một container dạng lưới để dễ căn chỉnh các phần tử con.*/
+  justify-items: center; /* → Căn giữa tất cả phần tử con theo chiều ngang trong ô grid.*/
+  justify-self: center;  /* → Căn giữa chính .home__images trong grid của phần tử cha (nếu phần tử cha là display: grid).*/
+}
+.home__ingredient{
+  width: 60px;                      /* → Hình ảnh nguyên liệu/phụ kiện được thu nhỏ.*/
+  filter: var(--shadow-small-img);
+  position: absolute;
+  z-index: 2;
+  /* 💡 Tác dụng: .home__ingredient là một hình ảnh được đặt nổi lên và định vị tự do, 
+  có thể dùng cho các yếu tố trang trí như lá, gia vị, bong bóng, v.v.*/
+}
+/* 🧠 Tóm tắt:
+.home__images là khối chứa trung tâm, dùng grid để căn chỉnh.
+.home__ingredient là các hình ảnh phụ trang trí, được định vị tự do bằng absolute.
+Có thể tạo hiệu ứng nổi bật và bố cục sáng tạo cho các phần giới thiệu sản phẩm hoặc hero.*/
+
+.home__board,
+.home__pizza {
+  filter: var(--shadow-big-img);
+}
+.home__pizza {
+  width: 300px;   /* → Thiết lập chiều rộng hình ảnh là 300px. Chiều cao sẽ tự động co theo tỷ lệ nếu không đặt.*/
+  z-index: 2;     /* → Đặt phần tử ở lớp hiển thị phía trên những phần tử khác có z-index thấp hơn. 
+                       Điều này rất quan trọng khi có nhiều hình ảnh dùng position: absolute trong cùng một khối.*/
+}
+.home__board {
+  width: 300px;
+  position: absolute;
+  bottom: -0.5rem;
+  left:  -0.5rem;
+}
+
+.home__leaf-1 {
+  top: -1rem;
+}
+.home__pepperoni {
+  right: -0.5rem;
+  top: 2rem;
+}
+.home__mushroom {
+  right: -0.5rem;
+  bottom: 2rem;
+}
+.home__olive {
+  bottom:  -1rem;
+}
+.home__tomato {
+  left: -0.5rem;
+  top: 2rem;
+}
+.home__leaf-2 {
+  left: -.5rem;
+  bottom: 2rem;
+}
+
 
 
 /*=============== BUTTON ===============*/
+.button {
+  display: inline-flex;
+  justify-content: center;
+  background-color: var(--first-color);
+  color: var(--white-color);
+  padding: 1rem 1.5rem;
+  font-weight: var(--font-semi-bold);
+  border-radius: 4rem;
+  box-shadow: 0 8px 24px hsla(353, 100%, 40%, 0.4);
+  transition: background-color 0.4s;
+};
+.button:hover {
+  background-color: var(--first-color-alt);
+}
 
 
 /*=============== ABOUT ===============*/
@@ -261,37 +388,25 @@ img {
 
 /*=============== POPULAR ===============*/
 
-
 /* Swiper class */
-
-
 
 /*=============== RECIPE ===============*/
 
-
 /*=============== PRODUCTS ===============*/
-
 
 /*=============== CONTACT ===============*/
 
-
 /*=============== FOOTER ===============*/
-
 
 /*=============== SCROLL BAR ===============*/
 
-
 /*=============== SCROLL UP ===============*/
 
-
 /* Show Scroll Up */
-
 
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
 
-
 /* For medium devices */
-
 
 /* For large devices */
